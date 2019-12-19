@@ -1,0 +1,30 @@
+/teacher/1
+/teacher/1/requests
+/teacher/1/requests/school/1
+/teacher/1/requests/school/1/teacher
+
+query {
+    teacher(teacherId: 1) {
+        name
+        email
+        school {
+            name
+            address
+        }
+        requests {
+            school {
+                name
+                address
+                teacher {
+                    name
+                    email
+                }
+            }
+            requestedAt
+            requestedBy
+        }
+    }
+}
+
+Teacher -> School
+Teacher -> Requests -> school

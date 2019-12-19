@@ -1,0 +1,40 @@
+function Login() {
+    const onSubmit = React.useMemo(() => {
+
+    }, [...]);
+
+    return (
+        <div>
+            <form>...
+        </div>
+    )
+}
+
+memoization 
+fib(5) => 5*4*3*2*1 // fib(5) => 120
+fib(6) => 6*fib(5)
+
+for a given set of inputs => if the output doesn't change => then you can "cache" a.k.a memoization the results. 
+
+const add = (a, b) => {
+    return a + b;
+}
+
+// create a local cache
+const cache = {
+    ['1,2']: 3,
+    ['10,20']: 30,
+};
+const addWithMemo = (a,b) => {
+    const key = `${a},${b}`; // `1-2`
+    if (cache[key]) return cache[key];
+
+    // compute the result because did not find in cache
+    const result = a + b;
+    // set in cache
+    cache[key] = result;
+    return result;
+}
+
+addWithMemo(1, 2) // 3 => computes the result
+addWithMemo(1, 2) // 3 => return from cache

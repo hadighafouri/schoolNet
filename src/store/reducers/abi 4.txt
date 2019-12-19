@@ -1,0 +1,42 @@
+actions 
+function fetchTeachersSucess(teachersData) {
+    return {
+        type: 'FETCH_TEACHERS_SUCCESS',
+        data: teachersData,
+    }
+}
+
+thunks => async actions 
+    - fetch data
+    - set loading state before - dispatch({ type: 'FETCH_TEACHERS_STARTED' }) => loading: true
+     - set loading state after
+     - fetch the school data for the teacher // async action
+    - set the data/ error - dispatch(fetchTeachersSuccess(apiResponse))
+
+    - thunks are composed of multiple action creators
+
+GET /teachers: list of teachers  // => fetch teacher data + fetch school data
+POST /teachers - insert a new teacher
+
+<App>
+  <TeachersList>
+    <Teacher teacher={teacher} />
+    <Teacher teacher={teacher} />
+    <Teacher teacher={teacher} />
+  </TeachersList>
+</App>
+
+-------
+state = {
+    isLoading: false,
+    data: [],
+    error: null,
+}
+
+componentDidMOunt() {
+    this.setState({  isLoading: true })
+    fetch('your-api-url/teachers')
+        .then((response) => {
+            this.setState({ data: response })
+        })
+}

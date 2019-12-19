@@ -1,0 +1,47 @@
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {loginAction} from '../actions';
+
+class Login extends Component {
+  onSubmit = e => {
+    e.preventDefault ();
+    loginAction ();
+  };
+
+  render () {
+    return (
+      <div>
+        <form className="form-group " onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <input
+              type="email"
+              className="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+            <small id="emailHelp" className="form-text text-muted">
+              We'll never share your email with anyone else.
+            </small>
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleInputPassword1">Password</label>
+            <input
+              type="password"
+              className="form-control"
+              id="exampleInputPassword1"
+              placeholder="Password"
+            />
+          </div>
+          <div className="form-group form-check" />
+          <button type="submit" className="btn btn-primary">Login</button>
+        </form>
+      </div>
+    );
+  }
+}
+const mapStateToProps = state => {
+  return {};
+};
+
+export default connect (mapStateToProps, {loginAction}) (Login);
